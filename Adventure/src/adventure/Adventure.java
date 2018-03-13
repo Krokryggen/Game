@@ -25,7 +25,7 @@ public class Adventure {
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
     JButton startButton, choice1, choice2, choice3, choice4, musicButton;
     JTextArea mainTextArea;
-    int playerHP, monsterHP, silverRing;
+    int playerHP, monsterHP, silverRing, shovel, torch;
     String weapon, position, tavernMusic, musicOnOff;
     ImageIcon image;
     Random rand = new Random();
@@ -378,6 +378,38 @@ public class Adventure {
         choice3.setText("Go Left");
         choice4.setText("Go Back");
     }
+    
+    public void cabinOutside(){
+        
+        imagePanel.setBounds(50, 50, 400, 280);
+        //image = new ImageIcon(".//res//LongSword.png");
+        //imageLabel.setIcon(image);
+        
+        position = "cabinOutside";
+        mainTextArea.setText("You see an old and run-down cabin. \n It looks abandoned. \n You see a shovel leaning against the wall");
+        
+        
+        choice1.setText("Go inside");
+        choice2.setText("Go back");
+        choice3.setText("Pick up shovel");
+        choice4.setText("");
+    }
+    
+    public void caveOutside(){
+        
+        imagePanel.setBounds(50, 50, 400, 280);
+        //image = new ImageIcon(".//res//LongSword.png");
+        //imageLabel.setIcon(image);
+        
+        position = "caveOutside";
+        mainTextArea.setText("You come across a big cave opening \n Going in would be dangerous without a \ntorch");
+        
+        
+        choice1.setText("Go inside");
+        choice2.setText("Go back");
+        choice3.setText("");
+        choice4.setText("");
+    }
     public void fight(){
        position = "fight";
        mainTextArea.setText("MonsterHP: " + monsterHP + "\n\nWhat do you want to do?");
@@ -445,7 +477,7 @@ public class Adventure {
     public void win(){
         position = "win";
         
-        mainTextArea.setText("You defeated the monster!\nThe monster dropped a ring!\n\n(You obtained Silver Ring)");
+        mainTextArea.setText("You defeated the monster!\nThe monster dropped a ring!\n\n(You obtained a Silver Ring)");
         
         silverRing = 1;
         choice1.setText("Go East");
@@ -455,19 +487,18 @@ public class Adventure {
     
     }
     
-    public void ending(){
-    position = "ending";
+    public void happyGuard(){
+    position = "happyGuard";
     
-    mainTextArea.setText("Guard: Oh, you killed the Goblin!?\n Thank you so much! \nYou are a true hero!\nWelcome to our town!\n\n<THE END>");
+    mainTextArea.setText("Guard: Oh, you killed the Goblin!?\n Thank you so much! \n Here is a torch, as a reward for your \nbravery! \n\n(You obtained a torch)");
+    
+        int torch = 1;
     
         choice1.setText(">");
         choice2.setText("");
         choice3.setText("");
         choice4.setText("");
-        choice1.setVisible(false);
-        choice2.setVisible(false);
-        choice3.setVisible(false);
-        choice4.setVisible(false);
+        
     }
     
     
@@ -492,7 +523,7 @@ public class Adventure {
                     switch(yourChoice){
                         case "c1": 
                             if(silverRing ==1){
-                                ending();
+                                happyGuard();
                             }
                             else{
                                 talkGuard(); 
@@ -577,8 +608,8 @@ public class Adventure {
                     
                     case "forest":
                     switch(yourChoice){
-                        case "c1": cave();break; 
-                        case "c2": cabin(); break;
+                        case "c1": caveOutside();break; 
+                        case "c2": cabinOutside(); break;
                         case "c3": break;
                         case "c4": break;
                     }
@@ -627,6 +658,13 @@ public class Adventure {
                         case "c4": break;
                     }
                     break;
+                   case "happyGuard":
+                    switch(yourChoice){
+                        case "c1": townGate(); break;
+                        case "c2": break;
+                        case "c3": break;
+                        case "c4": break;
+                    } 
                     
                 }
             }
