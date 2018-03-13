@@ -1,2 +1,5 @@
 # Game
-my Game
+ A game with a GUI
+
+
+
