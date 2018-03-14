@@ -230,7 +230,7 @@ public class Adventure {
     
     public void townGate(){
         imagePanel.setBounds(50, 50, 400, 280);
-        image = new ImageIcon(".//res//Gate.png");
+        image = new ImageIcon(".//res//Guard.png");
         imageLabel.setIcon(image);
         
         position = "townGate";
@@ -247,6 +247,10 @@ public class Adventure {
     }
     
     public void talkGuard(){
+        imagePanel.setBounds(50, 50, 400, 280);
+        image = new ImageIcon(".//res//Guard.png");
+        imageLabel.setIcon(image);
+        
         position = "talkGuard";
         mainTextArea.setText("Guard: Hello there stranger. \nI'm Sorry, but you can't enter our town");
         
@@ -255,10 +259,14 @@ public class Adventure {
         choice3.setText("");
         choice4.setText("");
         
-        imagePanel.setVisible(false);
+        
     }
     
     public void attackGuard(){
+        imagePanel.setBounds(50, 50, 400, 280);
+        image = new ImageIcon(".//res//AngryGuard.png");
+        imageLabel.setIcon(image);
+        
         position = "attackGuard";
         mainTextArea.setText("Guard: Hey! What the hell!? \n The guard knocks you out. \n(you take 2 damage)");
         playerHP = playerHP -2;
@@ -269,7 +277,7 @@ public class Adventure {
         choice3.setText("");
         choice4.setText("");
         
-        imagePanel.setVisible(false);
+        
     }
     
     public void crossRoad(){
@@ -297,7 +305,7 @@ public class Adventure {
         weapon = "Long Sword";
         weaponLabelName.setText(weapon);
         
-        choice1.setText("Go West");
+        choice1.setText("Go Back");
         choice2.setText("");
         choice3.setText("");
         choice4.setText("");
@@ -313,7 +321,7 @@ public class Adventure {
         mainTextArea.setText("You walked into the forest");
         
         
-        choice1.setText("Go West");
+        choice1.setText("Go Back");
         choice2.setText("");
         choice3.setText("");
         choice4.setText("");
@@ -345,71 +353,109 @@ public class Adventure {
         //Kan legge inn monster sin HP her, om jeg vil ha ny per monsterr
         mainTextArea.setText("The forest continues");
         
-        choice1.setText("Go");
-        choice2.setText("Leave");
+        choice1.setText("Go Forward");
+        choice2.setText("Go Back");
         choice3.setText("");
         choice4.setText("");
     }
     
     public void north(){
+        imagePanel.setBounds(50, 50, 400, 280);
+        image = new ImageIcon(".//res//HealingWell.png");
+        imageLabel.setIcon(image);
+        
         position = "north";
         mainTextArea.setText("There is a healing well! \nYou drink and restore 2 HP!\n\n (You restore 2 points of health)");
         playerHP = playerHP +2;
         hpLabelNumber.setText(""+playerHP);
         
-        choice1.setText("Go South");
+        choice1.setText("Go Back");
         choice2.setText("");
         choice3.setText("");
         choice4.setText("");
     }
     
-    public void forest(){
+    public void deepForest(){
         
         imagePanel.setBounds(50, 50, 400, 280);
-        //image = new ImageIcon(".//res//LongSword.png");
-        //imageLabel.setIcon(image);
+        image = new ImageIcon(".//res//DeepForest.png");
+        imageLabel.setIcon(image);
         
-        position = "forest";
-        mainTextArea.setText("You walked into a deep forest. \nTo your Right is a big cave\nTo your left is a small cabin");
+        position = "deepForest";
+        mainTextArea.setText("You walked into a deep forest. \nTo your Right is a big cave\nTo your Left is a small cabin");
         
         
         choice1.setText("Go Right");
-        choice2.setText("Go Straight");
-        choice3.setText("Go Left");
-        choice4.setText("Go Back");
+        choice2.setText("Go Left");
+        choice3.setText("Go Back");
+        choice4.setText("");
     }
     
     public void cabinOutside(){
         
         imagePanel.setBounds(50, 50, 400, 280);
+        image = new ImageIcon(".//res//Cabin.png");
+        imageLabel.setIcon(image);
+        
+        position = "cabinOutside";
+        mainTextArea.setText("You see an old and run-down cabin. \n It looks abandoned. \nThere is a shovel leaning against the \nwall\n(You obtained a shovel)");
+        
+        shovel = 1;
+        
+        choice1.setText("Go Inside");
+        choice2.setText("Go Back");
+        choice3.setText("");
+        choice4.setText("");
+    }
+    
+    public void cabin(){
+        
+        imagePanel.setBounds(50, 50, 400, 280);
         //image = new ImageIcon(".//res//LongSword.png");
         //imageLabel.setIcon(image);
         
-        position = "cabinOutside";
-        mainTextArea.setText("You see an old and run-down cabin. \n It looks abandoned. \n You see a shovel leaning against the wall");
+        position = "cabin";
+        mainTextArea.setText("The floor creaks as you enter. \nNo one could possibly still live here");
         
         
-        choice1.setText("Go inside");
-        choice2.setText("Go back");
-        choice3.setText("Pick up shovel");
+        choice1.setText("");
+        choice2.setText("Go Back");
+        choice3.setText("");
         choice4.setText("");
     }
     
     public void caveOutside(){
         
         imagePanel.setBounds(50, 50, 400, 280);
-        //image = new ImageIcon(".//res//LongSword.png");
-        //imageLabel.setIcon(image);
+        image = new ImageIcon(".//res//CaveOutside.png");
+        imageLabel.setIcon(image);
         
         position = "caveOutside";
         mainTextArea.setText("You come across a big cave opening \n Going in would be dangerous without a \ntorch");
         
         
-        choice1.setText("Go inside");
-        choice2.setText("Go back");
+        choice1.setText("Go Inside");
+        choice2.setText("Go Back");
         choice3.setText("");
         choice4.setText("");
     }
+    
+    public void cave(){
+        
+        //imagePanel.setBounds(50, 50, 400, 280);
+        //image = new ImageIcon(".//res//LongSword.png");
+        //imageLabel.setIcon(image);
+        
+        position = "cave";
+        mainTextArea.setText("The cave is dark, \nbut the torch gives some light \n It smells bad");
+        
+        
+        choice1.setText("Go Further");
+        choice2.setText("Go Back");
+        choice3.setText("");
+        choice4.setText("");
+    }
+    
     public void fight(){
        position = "fight";
        mainTextArea.setText("MonsterHP: " + monsterHP + "\n\nWhat do you want to do?");
@@ -480,8 +526,8 @@ public class Adventure {
         mainTextArea.setText("You defeated the monster!\nThe monster dropped a ring!\n\n(You obtained a Silver Ring)");
         
         silverRing = 1;
-        choice1.setText("Go East");
-        choice2.setText("");
+        choice1.setText("Go Forward");
+        choice2.setText("Go Back");
         choice3.setText("");
         choice4.setText("");
     
@@ -492,7 +538,7 @@ public class Adventure {
     
     mainTextArea.setText("Guard: Oh, you killed the Goblin!?\n Thank you so much! \n Here is a torch, as a reward for your \nbravery! \n\n(You obtained a torch)");
     
-        int torch = 1;
+        torch = 1;
     
         choice1.setText(">");
         choice2.setText("");
@@ -599,18 +645,18 @@ public class Adventure {
                     break;
                     case "west2":
                     switch(yourChoice){
-                        case "c1": forest();break; 
+                        case "c1": deepForest();break; 
                         case "c2": crossRoad(); break;
                         case "c3": break;
                         case "c4": break;
                     }
                     break;
                     
-                    case "forest":
+                    case "deepForest":
                     switch(yourChoice){
                         case "c1": caveOutside();break; 
                         case "c2": cabinOutside(); break;
-                        case "c3": break;
+                        case "c3": west2();
                         case "c4": break;
                     }
                     break;
@@ -647,13 +693,55 @@ public class Adventure {
                     break;
                 case "win":
                     switch(yourChoice){
-                        case "c1": crossRoad(); break;  
+                        case "c1": deepForest(); break; 
+                        case "c2": crossRoad(); break;
                     }
                     break;
                     case "east2":
                     switch(yourChoice){
                         case "c1": crossRoad(); break;
                         case "c2": break;
+                        case "c3": break;
+                        case "c4": break;
+                    }
+                    break;
+                    case "cabinOutside":
+                    switch(yourChoice){
+                        case "c1": cabin(); break;
+                        case "c2": deepForest();break;
+                        case "c3": break;
+                        case "c4": break;
+                    }
+                    break;
+                    
+                    case "cabin":
+                    switch(yourChoice){
+                        case "c1": break;
+                        case "c2": cabinOutside();break;
+                        case "c3": break;
+                        case "c4": break;
+                    }
+                    break;
+                    
+                    case "caveOutside":
+                    switch(yourChoice){
+                        case "c1": 
+                            if(torch ==1){
+                                cave();
+                            }
+                            else{
+                                caveOutside();
+                            }
+                            break;
+                        case "c2": deepForest();break;
+                        case "c3": break;
+                        case "c4": break;
+                    }
+                    break;
+                    case "cave":
+                    switch(yourChoice){
+                        case "c1": break;
+                        case "c2": caveOutside(); break;
                         case "c3": break;
                         case "c4": break;
                     }
